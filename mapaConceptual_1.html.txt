@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mapa Conceptual</title>
+    <!-- Incluye la biblioteca vis.js -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.css">
+</head>
+<body>
+    <!-- Crear un contenedor para el mapa conceptual -->
+    <div id="mapaConceptual" style="width: 800px; height: 600px;"></div>
+
+    <script>
+        // Crear un conjunto de datos para los nodos (elementos) y las relaciones
+        var nodos = new vis.DataSet([
+            { id: 1, label: 'Ocupados' },
+            { id: 2, label: 'Desocupados' },
+            { id: 3, label: 'PEI' },
+            { id: 4, label: 'PNET' },
+            { id: 5, label: 'Resto del mundo' }
+        ]);
+
+        var relaciones = new vis.DataSet([
+            { from: 1, to: 2, label: '2' },
+            { from: 1, to: 3, label: '4' },
+            { from: 1, to: 5, label: '9' }, // Relación de ocupados a Resto del mundo
+            { from: 2, to: 1, label: '1' },
+            { from: 2, to: 3, label: '6' },
+            { from: 2, to: 5, label: '11' }, // Relación de desocupados a Resto del mundo
+            { from: 3, to: 1, label: '3' },
+            { from: 3, to: 2, label: '5' },
+            { from: 5, to: 1, label: '8' }, // Relación de Resto del mundo a ocupados
+            { from: 5, to: 2, label: '10' } // Relación de Resto del mundo a desocupados
+        ]);
+
+        // Crear un objeto de configuración para el mapa conceptual
+        var opciones = {
+            nodes: {
+                shape: 'box',
+                color: 'lightblue'
+            },
+            edges: {
+                arrows: 'to',
+                font: {
+                    align: 'middle'
+                }
+            }
+        };
+
+        // Crear un objeto Network con vis.js
+        var container = document.getElementById('mapaConceptual');
+        var datos = {
+            nodes: nodos,
+            edges: relaciones
+        };
+        var network = new vis.Network(container, datos, opciones);
+    </script>
+</body>
+</html>

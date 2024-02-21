@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Mapa Conceptual</title>
+    <!-- Incluye la biblioteca vis.js -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.css">
+
+    <h1>Bienvenido a mi grupo 5 de BOOSTRAP JAVASCRIPT</h1>
+
+    <!-- Estilos CSS -->
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            margin: 15px;
+            padding: 5px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .titulo {
+            font-size: 12px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .lineas {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+
+        .linea {
+            width: 25%;
+            /* Ajusta según tus necesidades */
+            padding: 10px;
+            background-color: #e0e0e0;
+            border-radius: 6px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 10px;
+        }
+    </style>
+
+
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="titulo">Integración de Herramientas</div>
+        <div class="lineas">
+            <div class="linea">
+                <p>Uso combinado de Slack, Trello, y Google Workspace.</p>
+                <li><a href="#termino1">Automatización de flujos de trabajo.</a></li></br>
+                <li><a href="#termino2">Conexión de repositorios con herramientas de gestión.</a></li></br>
+                <li><a href="#termino3">Mejora de Comunicación</a></li>
+            </div>
+            <div class="linea">
+                <p>Canales específicos para proyectos en Slack..</p>
+                <li><a href="#termino1">Notificaciones en tiempo real..</a></li></br>
+                <li><a href="#termino2">Videoconferencias para discusiones importantes.</a></li></br>
+                <li><a href="#termino3">Flujo de Trabajo Eficiente.</a></li>
+            </div>
+            <div class="linea">
+                <p>Creación de wikis y tutoriales en Notion.</p>
+                <li><a href="#termino1">Canales de aprendizaje en Slack..</a></li></br>
+                <li><a href="#termino2">Enlaces a recursos educativos.</a></li></br>
+                <li><a href="#termino3">Monitorización de Proyectos</a></li>
+            </div>
+
+
+
+        </div>
+    </div>
+</div>
+
+    <!-- Repite el mismo patrón para los demás títulos -->
+
+    <!-- Crear un contenedor para el mapa conceptual -->
+    <div id="mapaConceptual" style="width: 1400px; height: 1000px;"></div>
+
+    <script>
+        // Crear un conjunto de datos para los nodos (elementos) y las relaciones
+        var nodos = new vis.DataSet([
+            { id: 1, label: 'Industria TI_1' },
+            { id: 2, label: 'Perfiles Profecionales' },
+            { id: 3, label: 'Herramientas de Gestion' },
+            { id: 4, label: 'Herramientas portafolios' },
+            { id: 5, label: 'Etica y buenas practicas' },
+            { id: 6, label: 'Cargos profecionales' },
+
+            //PERFILES PROFECIONALES
+            { id: 7, label: 'Desarrolladores' },
+            { id: 8, label: 'Buenas prácticas de codificación.' },
+            { id: 9, label: 'Frameworks y bibliotecas.' },
+            { id: 10, label: 'Gestión y Operación TI' },
+            { id: 11, label: 'Administración de sistemas y redes' },
+            { id: 12, label: 'Gestión de proyectos' },
+            { id: 13, label: 'Seguridad y Datos' },
+            { id: 14, label: 'Ciberseguridad.' },
+            { id: 15, label: 'Cumplimiento de regulaciones.' },
+            { id: 16, label: 'Diseño' },
+            { id: 17, label: 'Experiencia de usuario (UX).' },
+            { id: 18, label: 'Diseño de interfaces.' },
+            { id: 19, label: 'Testing' },
+            { id: 20, label: 'Pruebas unitarias e integración.' },
+            { id: 21, label: 'Automatización de pruebas.' },
+
+            //HERRAMIENTAS DE GESTION
+            { id: 22, label: 'Slack' },
+            { id: 23, label: 'Notion' },
+            { id: 24, label: 'Trello' },
+            { id: 25, label: 'Microsoft Teams' },
+            { id: 26, label: 'Google Workspace' },
+
+            //HERRAMIENTAS PORTAFOLIO
+            { id: 27, label: 'Wix' },
+            { id: 28, label: 'Behance' },
+            { id: 29, label: 'GitHub Pages' },
+            { id: 30, label: 'LinkedIn' },
+
+            //CARGOS PROFECIONALES
+            { id: 31, label: 'Junior' },
+            { id: 32, label: 'Semi Senior' },
+            { id: 33, label: 'Senior' }
+
+        ]);
+
+        var relaciones = new vis.DataSet([
+            { from: 1, to: 2, label: '9' },
+            { from: 1, to: 3, label: '1' },
+            { from: 1, to: 4, label: '1' },
+            { from: 1, to: 5, label: '1' },
+            { from: 1, to: 6, label: '1' },
+
+
+            //PERFILES PROFECIONALES
+            { from: 2, to: 7, label: '2' },
+            { from: 2, to: 10, label: '2' },
+            { from: 2, to: 13, label: '2' },
+            { from: 2, to: 16, label: '2' },
+            { from: 2, to: 19, label: '2' },
+            //Desarrolladores
+            { from: 7, to: 8, label: '1' },
+            { from: 8, to: 9, label: '1' },
+            //Gestión y Operación TI
+            { from: 10, to: 11, label: '1' },
+            { from: 11, to: 12, label: '1' },
+            //Seguridad y Datos
+            { from: 13, to: 14, label: '1' },
+            { from: 14, to: 15, label: '1' },
+            //Diseño
+            { from: 16, to: 17, label: '1' },
+            { from: 17, to: 18, label: '1' },
+            //Testing
+            { from: 19, to: 20, label: '3' },
+            { from: 20, to: 21, label: '3' },
+
+
+            //HERRAMIENTAS DE GESTION
+            { from: 3, to: 22, label: '1' },
+            { from: 3, to: 23, label: '1' },
+            { from: 3, to: 24, label: '1' },
+            { from: 3, to: 25, label: '1' },
+            { from: 3, to: 26, label: '1' },
+
+
+            //HERRAMIENTAS PORTAFOLIOS
+            { from: 4, to: 27, label: '1' },
+            { from: 4, to: 28, label: '1' },
+            { from: 4, to: 29, label: '1' },
+            { from: 4, to: 30, label: '1' },
+
+            //CARGOS PROFECIONALES
+            { from: 6, to: 31, label: '1' },
+            { from: 6, to: 32, label: '1' },
+            { from: 6, to: 33, label: '1' }
+
+
+        ]);
+
+        // Crear un objeto de configuración para el mapa conceptual
+        var opciones = {
+            nodes: {
+                shape: 'box',
+                color: 'lightblue'
+            },
+            edges: {
+                arrows: 'to',
+                font: {
+                    align: 'middle'
+                }
+            }
+        };
+
+        // Crear un objeto Network con vis.js
+        var container = document.getElementById('mapaConceptual');
+        var datos = {
+            nodes: nodos,
+            edges: relaciones
+        };
+        var network = new vis.Network(container, datos, opciones);
+    </script>
+</body>
+
+</html>
